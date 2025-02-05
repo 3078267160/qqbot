@@ -1,0 +1,29 @@
+
+server:
+  port: 9100
+#数据库配置
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/qqbot?useSSL=false&serverTimezone=UTC&characterEncoding=utf8
+    password: root
+    username: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.qqbot.pojo
+  configuration:
+    map-underscore-to-camel-case: true  # 自动转换下划线列名到驼峰属性名
+logging:
+  level:
+    com.qqbot.mapper: debug
+shiro:
+  ws:
+    server:
+      enable: true
+      url: "/xm"
+
+  plugin-list:
+    - com.qqbot.plugin.TsetPlugin
+    - com.qqbot.plugin.Group.controller.GroupMenu
+    - com.qqbot.Basics.SignSystem
+    - com.qqbot.Basics.Sensitive
